@@ -1,0 +1,91 @@
+- **문제** : 백준 19951번 - 태상이의 훈련소 생활
+- **난이도** : 골드 5
+- **문제 유형** : 누적합
+- **푼 언어** : java
+
+## 01. 문제 설명
+
+<p>2020년 5월 14일 논산훈련소에 입대한 태상이는 첫 총기 훈련에서 가스 조절기를 잃어버리는 중대한 실수를 범했다. 그로 인해, 태상이는 조교들에게 눈총을 받게 되었다. 조교들은 태상이에게 연병장(운동장)의 흙을 옮기는 일을 주고 제대로 수행하지 못하면 징계를 내리려고 한다.</p>
+
+<p>연병장은 일렬로 이어진 <em>N</em>개의 칸으로 이루어져 있으며 각 칸마다 높이를 가지고 있고, 첫 번째 칸부터 순서대로 1번, 2번, 3번, ..., <em>N</em>번 칸으로 명칭이 붙어있다. 조교들은 총 <em>M</em>명이 있으며, 각 조교들은 태상이에게 <em>a</em>번 칸부터 <em>b</em>번 칸까지 높이 <em>k</em>만큼 흙을 덮거나 파내라고 지시한다. 흙은 주변 산에서 얼마든지 구할 수 있으므로 절대로 부족하지 않다.</p>
+
+<p>태상이는 각 조교의 지시를 각각 수행하면, 다른 조교의 지시로 흙을 덮어둔 칸을 다시 파내기도 하는 비효율적인 일이 발생하는 것을 깨달았다. 그래서 태상이는 각 조교의 지시를 모아 연병장 각 칸의 최종 높이를 미리 구해 한 번에 일을 수행하려고 한다.</p>
+
+<p>불쌍한 태상이를 위해 조교들의 지시를 모두 수행한 뒤 연병장 각 칸의 높이를 구하자.</p>
+
+### 입력 
+
+ <p>첫 줄에 연병장의 크기 <em>N</em>과 조교의 수 <em>M</em>이 주어진다.</p>
+
+<p>둘째 줄에 연병장 각 칸의 높이 <em>H<sub>i</sub></em>가 순서대로 <em>N</em>개 주어진다.</p>
+
+<p>셋째 줄부터 <em>M</em>개의 줄에 각 조교의 지시가 주어진다.</p>
+
+<p>각 조교의 지시는 세 개의 정수 <em>a</em>, <em>b</em>, <em>k</em>로 이루어져 있다.</p>
+
+<ul>
+	<li><em>k </em>≥ 0인 경우 <em>a</em>번 칸부터 <em>b</em>번 칸까지 높이가 각각 |<em>k</em>| 만큼 늘어나도록 흙을 덮어야 한다.</li>
+	<li><em>k</em> < 0인 경우 <em>a</em>번 칸부터 <em>b</em>번 칸까지 높이가 각각 |<em>k</em>| 만큼 줄어들도록 흙을 파내야 한다.</li>
+</ul>
+
+### 출력 
+
+ <p>모든 지시를 수행한 뒤 연병장 각 칸의 높이를 공백을 사이에 두고 출력한다.</p>
+
+
+## 02. 문제 풀이
+
+- 방법 <br>
+1. 차분을 구하고<br>
+2. 그 차분의 누적합을 구하는 문제<br>
+
+
+    <코드>
+    ```java
+    import java.io.*;
+    import java.util.*;
+
+    public class Main
+    {   
+        static int[] delt;
+        static int[] acc;
+        static int N,M;
+        static int[] h;
+        public static void main(String[] args) throws IOException {
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            N = Integer.parseInt(st.nextToken());
+            M = Integer.parseInt(st.nextToken());
+            delt = new int[N+2];
+            h = new int[N+1];
+            acc = new int[N+1];
+            st = new StringTokenizer(br.readLine());
+            for(int i=0;i<N;i++){
+                h[i+1] = Integer.parseInt(st.nextToken());
+            }
+            for(int i=0;i<M;i++){
+                st = new StringTokenizer(br.readLine());
+                int sts = Integer.parseInt(st.nextToken());
+                int ed = Integer.parseInt(st.nextToken());
+                int k = Integer.parseInt(st.nextToken());
+                delt[sts] += k;
+                delt[ed+1] += -1 * k;
+            }
+            int sm = 0;
+            for(int i =1;i<=N;i++){
+                if(delt[i]!=0){
+                    sm += delt[i];
+                }
+                acc[i] = sm;
+            }
+            for(int i=1;i<=N;i++){
+                System.out.print((h[i] + acc[i]) + " ");
+            }
+        }
+    }
+    ```
+
+## 03. 회고
+*!!주의!!* 오프라인 쿼리
+- 오프라인 쿼리라 가능했다!!!
+- 누적합 유형 알아도 처음에 방법 떠올리기 힘든 문제 !
