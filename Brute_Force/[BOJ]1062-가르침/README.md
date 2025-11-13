@@ -90,6 +90,81 @@
     }
     ```
 
+- 방법 2 (비트마스크)
+1. 공통 글자 처리
+모든 단어는 "anta"로 시작되고, "tica"로 끝난다. 즉, 'a', 'c', 'i', 'n', 't' 이 5개의 단어들은 무조건 배워야 한다. 그렇기에 5보다 K가 작다면 `0`을 출력하고 종료한다. 
+이후 불필요한 메모리와 탐색을 줄이기 위해 모든 단어에서 "anta"와 "tica"를 잘라내고 중간에 나오는 글자들만 사용한다. 또한, 항상 포함되는 공통 글자 다섯 개는 Set에 두었다. 해당 Set에 글자들이 포함되어 있는지 빠르게 탐색하려고 Set을 사용했다. 
+이 다섯 글자를 제외한 나머지 글자들만 따로 `commonWordSet`에 담는다. Set을 사용하면 중복이 제거되기 때문에 이후 더 적은 양의 연산이 가능하게 만들어 준다.
+
+2. 단어를 비트마스크로 변환하기
+알파벳 26개를 각각 하나의 비트로 대응시켜서, 각 단어를 배우기 위해 “어떤 알파벳이 필요한지”를 나타내는 비트로 표현한다. 예를 들어 a는 0번, b는 1번, ... z는 25번으로 매핑하고, 해당 글저가 등장하면 매핑된 비트에 1로 표시한다.
+
+3. 조합(DFS)으로 알파벳 선택 + 읽을 수 있는 단어 수 계산
+`charSet`에는 공통 글자 5개를 제외한 글자만 들어있다. 이제 이 집합에서 최대 K - 5개를 선택해서 가르칠 수 있다. `charSet`에 담겨있는 글자들은 이후 비트마스킹을 위해 bit로 변환시키고, 조합을 사용하여 단어들을 고른다. 그리고 고른 단어들로 몇 개의 단어를 배울 수 있는지 체크한 후 `cnt`를 증가시킨다. 이후 `ans`와 비교하여 큰 값으로 업데이트 한다.
+
+
+```javascript
+const fs = require('fs')
+const filePath = process.platform === 'linux' ? 'dev/stdin' : '1062_input.txt'
+const input = fs.readFileSync(filePath).toString().trim().split('\n')
+
+const [N, K] = input[0].split(' ').map(Number)
+
+// K가 5 미만이면 어떤 단어도 못 읽음
+if (K < 5) {
+  console.log(0)
+  process.exit(0)
+}
+
+
+const charSet = new Set()
+const commonWordSet = new Set(['a', 'c', 'i', 'n', 't'])
+
+// 단어를 비트로 변환
+const word2Bit = (word) => {
+  let bit = 0
+  
+  for (let char of word) {
+    if (!commonWordSet.has(char)) {
+      charSet.add(char)   // 중복 단어 제거
+      bit |= (1 << (char.charCodeAt(0) - 65))
+    }
+  }
+  return bit
+}
+
+const word2BitList = []
+
+for ( let i=1; i<=N; i++ ) {
+  const curWord = input[i].slice(4, input[i].length - 4)
+  word2BitList.push(word2Bit(curWord))
+}
+
+const charList = Array.from(charSet)
+const charToBitList = charList.map(ch => 1 << (ch.charCodeAt(0) - 97))
+const limit = Math.min(K - 5, charList.length)
+let ans = 0
+
+const combine = (depth, lev, mask) => {
+  if ( depth === limit ) {
+    let cnt = 0
+    for (const wordBit of word2BitList) {
+      if ((wordBit & ~mask) === 0) cnt++
+    }
+    
+    if (cnt > ans) ans = cnt
+    return
+  }
+  for(let i = lev; i < charToBitList.length; i++) {
+    combine(depth + 1, i + 1, mask | charToBitList[i])
+  }
+
+}
+  
+combine(0, 0, 0)
+console.log(ans)
+```
+
 ## 03. 회고
 - *주의 !!* 유연한 완탐 <br>
 처음에 완탐이라고 못떠올림. n = 26
