@@ -92,8 +92,63 @@
             }
         }
     ```
+    ``` javascript
+    const fs = require('fs')
+    const filePath = process.platform === 'linux' ? 'dev/stdin' : '1865_input.txt'
+    const input = fs.readFileSync(filePath).toString().trim().split('\n')
+
+    let idx = 0
+    let TC = Number(input[idx++])
+    let answer = ''
+
+    const bellmanFord = (N, edgeList) => {
+
+    const dist = Array(N + 1).fill(0)
+
+    for (let i = 1; i <= N; i++) {
+        let updated = false
+        for (const [s, e, cost] of edgeList) {
+        if (dist[e] > dist[s] + cost) {
+            dist[e] = dist[s] + cost
+            updated = true
+
+            if (i === N-1) {
+            return 'YES'
+            }
+        }
+        }
+
+        if (!updated) break
+    }
+
+    return 'NO'
+    }
+
+    while (TC--) {
+    let [N, M, W] = input[idx++].split(' ').map(Number)
+    const edges = []
+
+    while (M--) {
+        const [start, end, cost] = input[idx++].split(' ').map(Number)
+        edges.push([start, end, cost])
+        edges.push([end, start, cost])
+    }
+
+    while (W--) {
+        const [start, end, cost] = input[idx++].split(' ').map(Number)
+        edges.push([start, end, -cost])
+    }
+
+    answer += bellmanFord(N, edges) + '\n'
+    }
+
+    console.log(answer.trim())
+
+    ```
 # 03. 회고
 - *주의 !!* dist를 INF로 초기화 안해도 되는 이유<br>
 - 백준 11657번 참고
 - 11657은 1번 정점에서 다른 정점까지의 최단거리를 계산해야하고, 1번 정점에서 갈 수 없는 곳도 알아야함<br>
 - 웜홀 문제는 음수 사이클이 있는 지만 판별하면 됨<br>
+<br>
+- 아직 벨만포드 이해가 잘 안된다. 좀 더 공부해야겠다. (현석)
