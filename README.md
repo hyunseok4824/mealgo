@@ -37,3 +37,25 @@
 
 자세한 README 예시는 템플릿 참고
 
+---
+
+<details>
+<summary><strong>민 진행사항</strong></summary>
+
+<br>
+
+| Week (Date)        | Count | Details |
+|--------------------|--------|---------|
+| **1 (9/22 ~ 9/28)** | 5 | <details><summary>문제 보기</summary>- 사다리 조작<br>- 맥주 마시면서 걸어가기<br>- 노드 사이의 거리<br>- 민서의 응급 수술<br>- 소수의 연속합</details> |
+| **2 (9/29 ~ 10/5)** | 4 | <details><summary>문제 보기</summary>- 다이어트<br>- 동전 뒤집기<br>- 경사로<br>- 강의실 배정</details> |
+| **3 (10/6 ~ 10/12)** | 2 | <details><summary>문제 보기</summary>- 톱니바퀴<br>- 파일합치기 3</details> |
+| **4 (10/13 ~ 10/19)** | 4 | <details><summary>문제 보기</summary>- 줄 세우기<br>- 벽 부수고 이동하기 3<br>- 다리만들기<br>- 기타 레슨</details> |
+| **5 (10/20 ~ 10/26)** | 5 | <details><summary>문제 보기</summary>- 트리의 높이와 너비<br>- 문자열 폭발<br>- 컵라면<br>- 휴게소 세우기<br>- 트리 색칠하기</details> |
+| **6 (10/27 ~ 11/2)** | 6 | <details><summary>문제 보기</summary>- 멀티탭 스케줄링<br>- 알고스팟<br>- 옥상 정원 꾸미기<br>- 도시 분할 계획<br>- 스타트와 링크<br>- 링크와 스타트</details> |
+| **7 (11/3 ~ 11/9)** | 10 | <details><summary>문제 보기</summary>- 가장 긴 증가하는 부분 수열<br>- 가장 긴 증가하는 부분 수열 2<br>- 가장 긴 증가하는 부분 수열 4<br>- 가장 긴 증가하는 부분 수열 5<br>- 드래곤 앤 던전<br>- 안테나<br>- ⚾<br>- 가르침<br>- 점수따먹기<br>- 태상이의 훈련소 생활</details> |
+| **8 (11/10 ~ 11/16)** | 9 | <details><summary>문제 보기</summary>- 전화번호목록<br>- A와 B<br>- 연속부분최대곱<br>- 11월 11일<br>- 귀여운 라이언<br>- List of Unique Numbers<br>- 너의 수능 점수가 궁금해<br>- 타임머신<br>- 웜홀</details> |
+| **9 (11/17 ~ 11/23)** | 7 | <details><summary>문제 보기</summary>- 도로포장<br>- 계란으로 계란치기<br>- 미세먼지 안녕!<br>- 책 나눠주기<br>- Gaaaaaaaaaaaarden<br>- 낚시왕<br>- 이차원 배열과 연산</details> |
+
+<br>
+
+</details>
