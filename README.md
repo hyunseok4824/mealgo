@@ -55,6 +55,9 @@
 | **7 (11/3 ~ 11/9)** | 10 | <details><summary>문제 보기</summary>- 가장 긴 증가하는 부분 수열<br>- 가장 긴 증가하는 부분 수열 2<br>- 가장 긴 증가하는 부분 수열 4<br>- 가장 긴 증가하는 부분 수열 5<br>- 드래곤 앤 던전<br>- 안테나<br>- ⚾<br>- 가르침<br>- 점수따먹기<br>- 태상이의 훈련소 생활</details> |
 | **8 (11/10 ~ 11/16)** | 9 | <details><summary>문제 보기</summary>- 전화번호목록<br>- A와 B<br>- 연속부분최대곱<br>- 11월 11일<br>- 귀여운 라이언<br>- List of Unique Numbers<br>- 너의 수능 점수가 궁금해<br>- 타임머신<br>- 웜홀</details> |
 | **9 (11/17 ~ 11/23)** | 7 | <details><summary>문제 보기</summary>- 도로포장<br>- 계란으로 계란치기<br>- 미세먼지 안녕!<br>- 책 나눠주기<br>- Gaaaaaaaaaaaarden<br>- 낚시왕<br>- 이차원 배열과 연산</details> |
+| **10 (11/24 ~ 11/30)** | 0 | <details><summary>문제 보기</summary></details> |
+| **11 (12/1 ~ 12/7)** | 0 | <details><summary>문제 보기</summary></details> |
+| **12 (12/8 ~ 12/14)** | 0 | <details><summary>문제 보기</summary></details> |
 
 <br>
 
